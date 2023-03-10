@@ -7,13 +7,16 @@ import java.util.Map;
 import nl.tudelft.jpacman.PacmanConfigurationException;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.npc.ghost.GhostColor;
-
+import nl.tudelft.jpacman.ui.ThemeSelector;
 /**
  * Sprite Store containing the classic Pac-Man sprites.
  *
  * @author Jeroen Roosen 
  */
 public class PacManSprites extends SpriteStore {
+
+
+    ThemeSelector themeSelector;
 
     /**
      * The sprite files are vertically stacked series for each direction, this
@@ -55,14 +58,32 @@ public class PacManSprites extends SpriteStore {
      * @return A map of animated Pac-Man sprites for all directions.
      */
     public Map<Direction, Sprite> getPacmanSprites() {
-        return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+        if(themeSelector.getTheme_() == 1){
+            return directionSprite("/theme1/pacman.png", PACMAN_ANIMATION_FRAMES);
+        }
+        if(themeSelector.getTheme_() == 2){
+            return directionSprite("/theme2/pacman.png", PACMAN_ANIMATION_FRAMES);
+        }
+        if(themeSelector.getTheme_() == 3){
+            return directionSprite("/theme3/pacman.png", PACMAN_ANIMATION_FRAMES);
+        }
+        if(themeSelector.getTheme_() == 4){
+            return directionSprite("/theme4/pacman.png", PACMAN_ANIMATION_FRAMES);
+        }
+        if(themeSelector.getTheme_() == 5){
+            return directionSprite("/theme5/pacman.png", PACMAN_ANIMATION_FRAMES);
+        }
+        else {
+            return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+        }
+
     }
 
     /**
      * @return The animation of a dying Pac-Man.
      */
     public AnimatedSprite getPacManDeathAnimation() {
-        String resource = "/sprite/dead.png";
+        String resource = "/theme1/dead.png";
 
         Sprite baseImage = loadSprite(resource);
         AnimatedSprite animation = createAnimatedSprite(baseImage, PACMAN_DEATH_FRAMES,
@@ -107,30 +128,119 @@ public class PacManSprites extends SpriteStore {
     public Map<Direction, Sprite> getGhostSprite(GhostColor color) {
         assert color != null;
 
-        String resource = "/sprite/ghost_" + color.name().toLowerCase()
-            + ".png";
-        return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        if (themeSelector.getTheme_() == 1) {
+            String resource = "/theme1/ghost_" + color.name().toLowerCase()
+                + ".png";
+            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        }
+
+        if (themeSelector.getTheme_() == 2) {
+            String resource = "/theme2/ghost_" + color.name().toLowerCase()
+                + ".png";
+            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        }
+
+        if (themeSelector.getTheme_() == 3) {
+            String resource = "/theme3/ghost_" + color.name().toLowerCase()
+                + ".png";
+            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        }
+
+        if (themeSelector.getTheme_() == 4) {
+            String resource = "/theme4/ghost_" + color.name().toLowerCase()
+                + ".png";
+            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        }
+
+        if (themeSelector.getTheme_() == 5) {
+            String resource = "/theme5/ghost_" + color.name().toLowerCase()
+                + ".png";
+            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        }
+
+        else {
+            String resource = "/sprite/ghost_" + color.name().toLowerCase()
+                + ".png";
+            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+        }
     }
 
     /**
      * @return The sprite for the wall.
      */
     public Sprite getWallSprite() {
-        return loadSprite("/sprite/wall.png");
+
+        if (themeSelector.getTheme_() == 1) {
+            return loadSprite("/theme1/wall.png");
+        }
+
+        if (themeSelector.getTheme_() == 2) {
+            return loadSprite("/theme2/wall.png");
+        }
+
+        if (themeSelector.getTheme_() == 3) {
+            return loadSprite("/theme3/wall.png");
+        }
+
+        if (themeSelector.getTheme_() == 4) {
+            return loadSprite("/theme4/wall.png");
+        }
+
+        if (themeSelector.getTheme_() == 5) {
+            return loadSprite("/theme5/wall.png");
+        }
+        else {
+            return loadSprite("/sprite/wall.png");
+        }
     }
 
     /**
      * @return The sprite for the ground.
      */
     public Sprite getGroundSprite() {
-        return loadSprite("/sprite/floor.png");
+        if (themeSelector.getTheme_() == 1) {
+            return loadSprite("/theme1/floor.png");
+        }
+        if (themeSelector.getTheme_() == 2) {
+            return loadSprite("/theme2/floor.png");
+        }
+        if (themeSelector.getTheme_() == 3) {
+            return loadSprite("/theme3/floor.png");
+        }
+        if (themeSelector.getTheme_() == 4) {
+            return loadSprite("/theme4/floor.png");
+        }
+        if (themeSelector.getTheme_() == 5) {
+            return loadSprite("/theme5/floor.png");
+        }
+        else {
+            return loadSprite("/sprite/floor.png");
+        }
     }
 
     /**
      * @return The sprite for the
      */
     public Sprite getPelletSprite() {
-        return loadSprite("/sprite/pellet.png");
+
+        if (themeSelector.getTheme_() == 1) {
+            return loadSprite("/theme1/pellet.png");
+        }
+        if (themeSelector.getTheme_() == 2) {
+            return loadSprite("/theme2/cc.png");
+        }
+        if (themeSelector.getTheme_() == 3) {
+            return loadSprite("/theme3/pellet.png");
+        }
+        if (themeSelector.getTheme_() == 4) {
+            return loadSprite("/theme4/pellet.png");
+        }
+        if (themeSelector.getTheme_() == 5) {
+            return loadSprite("/theme5/pellet.png");
+        }
+        else {
+            return loadSprite("/sprite/pellet.png");
+        }
     }
 
     /**

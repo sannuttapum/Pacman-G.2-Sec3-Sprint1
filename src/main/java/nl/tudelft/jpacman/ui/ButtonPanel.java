@@ -1,10 +1,9 @@
 package nl.tudelft.jpacman.ui;
 
+import java.awt.*;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  * A panel containing a button for every registered action.
@@ -27,6 +26,19 @@ class ButtonPanel extends JPanel {
         super();
         assert buttons != null;
         assert parent != null;
+        setBackground(Color.BLACK);
+
+        ImageIcon startIcon = new ImageIcon("src/main/resources/button/startgame_btn.png");
+        Image startImg = startIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
+        ImageIcon startBtn = new ImageIcon(startImg);
+
+        ImageIcon pauseIcon = new ImageIcon("src/main/resources/button/stop_btn.png");
+        Image pauseImg = pauseIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
+        ImageIcon pauseBtn = new ImageIcon(pauseImg);
+
+        ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
+        Image exitImg = exitIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
+        ImageIcon exitBtn = new ImageIcon(exitImg);
 
         for (final String caption : buttons.keySet()) {
             JButton button = new JButton(caption);
@@ -34,7 +46,22 @@ class ButtonPanel extends JPanel {
                 buttons.get(caption).doAction();
                 parent.requestFocusInWindow();
             });
+            if (button.getText().equals("Start")) {
+                button.setIcon(startBtn);
+
+            } else if (button.getText().equals("Stop")) {
+                button.setIcon(pauseBtn);
+            } else if (button.getText().equals("Exit")) {
+                button.setIcon(exitBtn);
+            }
+            button.setOpaque(false);
+            button.setBorder(null);
+            button.setBorderPainted(false);
+            button.setContentAreaFilled(false);
+            button.setText(" ");
             add(button);
+
+            System.out.println(button.getText());
         }
     }
 }
